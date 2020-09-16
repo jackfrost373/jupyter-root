@@ -1,0 +1,27 @@
+{
+    "kind": "List",
+    "apiVersion": "v1",
+    "items": [
+        {
+            "kind": "ImageStream",
+            "apiVersion": "image.openshift.io/v1",
+            "metadata": {
+                "name": "s2i-root-notebook"
+            },
+            "spec": {
+                "lookupPolicy": {
+                    "local": true
+                },
+                "tags": [
+                    {
+                        "name": "3.6",
+                        "from": {
+                            "kind": "DockerImage",
+                            "name": "hub.docker.com/jackfrost373/jupyter-root"
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

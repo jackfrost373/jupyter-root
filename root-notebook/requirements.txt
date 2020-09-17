@@ -27,3 +27,12 @@ xlrd==1.2.*
 ### tensorflow-notebook
 
 tensorflow==2.0.0
+
+### additional packages
+
+uproot4
+awkward1
+qiskit
+PennyLane
+
+

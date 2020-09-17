@@ -14,10 +14,10 @@
                 },
                 "tags": [
                     {
-                        "name": "3.6",
+                        "name": "latest",
                         "from": {
                             "kind": "DockerImage",
-                            "name": "hub.docker.com/jackfrost373/jupyter-root"
+                            "name": "hub.docker.com/r/jackfrost373/jupyter-root"
                         }
                     }
                 ]

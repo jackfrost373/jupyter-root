@@ -12,7 +12,7 @@ RUN rm -rf /tmp/src/.git* && \
     mv /tmp/src/.s2i/bin /tmp/scripts && \
     mkdir -p /usr/src/root && \
     chown -R 1001 /usr/src/root && \
-    chown -R 1001 /usr/local/lib
+    chown -R 1001 /usr/local
 
 ENV XDG_CACHE_HOME=/opt/app-root/src/.cache
 
@@ -24,8 +24,6 @@ RUN yum install -y epel-release \
 
 USER 1001
 
-#RUN pip install python-dev-tools
-
 RUN cd /tmp \
  && git clone --depth 1 --branch v6-22-00-patches https://github.com/root-project/root /usr/src/root \
  && cmake3 /usr/src/root \
@@ -35,8 +33,8 @@ RUN cd /tmp \
   -DPYTHON_LIBRARY=/opt/app-root/lib/python3.6/site-packages \
  && cmake3 --build . -- -j$(nproc) \
  && cmake3 --build . --target install \
- && rm -rf /usr/src/root \
- && cd -
+ && rm -rf /usr/src/root/* \
+ && cd /
 
 ENV PYTHONPATH /usr/local/lib
 

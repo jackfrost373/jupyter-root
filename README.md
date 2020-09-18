@@ -9,7 +9,7 @@ Deployment in openshift via https://github.com/jupyter-on-openshift/jupyterhub-q
 
 Docker: https://hub.docker.com/r/jackfrost373/jupyter-root  
 Image can be run with  
-`docker run -p 8080:8080 [-e JUPYTER_ENABLE_LAB=true] jackfrost373/jupyter-root[:tag]`  
+`docker run -p 8080:8080 -e JUPYTER_ENABLE_LAB=true jackfrost373/jupyter-root[:tag]`  
 The notebook is then served at http://127.0.0.1:8080
 
 

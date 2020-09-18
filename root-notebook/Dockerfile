@@ -37,6 +37,7 @@ RUN cd /tmp \
  && cd /
 
 ENV PYTHONPATH /usr/local/lib
+ENV LD_LIBRARY_PATH "$LD_LIBRARY_PATH:/usr/local/lib/"
 
 RUN /tmp/scripts/assemble
 

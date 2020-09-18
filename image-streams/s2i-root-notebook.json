@@ -14,7 +14,7 @@
                 },
                 "tags": [
                     {
-                        "name": "latest",
+                        "name": "v1.0",
                         "from": {
                             "kind": "DockerImage",
                             "name": "hub.docker.com/r/jackfrost373/jupyter-root"

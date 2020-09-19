@@ -1,9 +1,4 @@
 
-## Additional config for jupyterhub. 
-## Set this in the resources > config maps >> jupyterhub_config.py, then redeploy. (same for the .sh)
-## Finally, attach persistent storage to the deployment.
-
-
 # copied from https://github.com/jupyter-on-openshift/jupyter-notebooks/blob/2.5.1/minimal-notebook/jupyter_notebook_config.py
 
 import os
@@ -71,7 +66,7 @@ c.Authenticator.whitelist = {'user1','user2'}
 
 c.KubeSpawner.user_storage_pvc_ensure = True
 
-c.KubeSpawner.pvc_name_template = '%s-nb-{username}' % c.KubeSpawner.hub_connect_ip
+c.KubeSpawner.pvc_name_template = 'nb-{username}' 
 c.KubeSpawner.user_storage_capacity = '1Gi'
 
 c.KubeSpawner.volumes = [
@@ -93,10 +88,10 @@ c.KubeSpawner.volume_mounts = [
 
 # Cull idle notebooks
 
-c.JupyterHub.services = [
-    {
-        'name': 'cull-idle',
-        'admin': True,
-        'command': ['cull-idle-servers', '--timeout=1800'],
-    }
-]
+#c.JupyterHub.services = [
+#    {
+#        'name': 'cull-idle',
+#        'admin': True,
+#        'command': ['cull-idle-servers', '--timeout=1800'],
+#    }
+#]

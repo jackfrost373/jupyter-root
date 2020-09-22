@@ -46,6 +46,9 @@ if os.path.exists(image_config_file):
 #]
 
 
+c.KubeSpawner.start_timeout = 300
+c.KubeSpawner.http_timeout = 200
+
 # Set notebook options
 c.KubeSpawner.environment = { 'JUPYTER_ENABLE_LAB': 'true' }
 

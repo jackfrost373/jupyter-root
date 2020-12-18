@@ -18,16 +18,14 @@ The notebook is then served at http://127.0.0.1:8080
 
 To deploy on the OpenShift web interface: (replace with root-notebook versions)
 
-- add the notebook image:  (top-right, 'add to project' > 'import YAML/JSON')
-https://raw.githubusercontent.com/jackfrost373/jupyter-root/master/image-streams/s2i-minimal-notebook.json  
-( https://raw.githubusercontent.com/jupyter-on-openshift/jupyter-notebooks/master/image-streams/s2i-root-notebook.json )
+- add the notebook image:  (top-right, 'add to project' > 'import YAML/JSON')  
+copy contents of `image-streams/s2i-root-notebook.json`
 
 - add the hub image:  
 https://raw.githubusercontent.com/jupyter-on-openshift/jupyterhub-quickstart/master/image-streams/jupyterhub.json
 
 - add the deployment template:  
-https://raw.githubusercontent.com/jackfrost373/jupyter-root/master/templates/jupyterhub-deployer.json  
-( https://raw.githubusercontent.com/jupyter-on-openshift/jupyterhub-quickstart/master/templates/jupyterhub-deployer.json )
+`templates/jupyterhub-deployer.json`  
 
 - add an instance from the template (bottom left, 'templates' > 'JupyterHub')
 

@@ -14,9 +14,10 @@ Image can be run with
 The notebook is then served at http://127.0.0.1:8080
 
 
+
 ================================
 
-To deploy on the OpenShift web interface: (replace with root-notebook versions)
+To deploy on the OpenShift web interface:
 
 - add the notebook image:  (top-right, 'add to project' > 'import YAML/JSON')  
 copy contents of `image-streams/s2i-root-notebook.json`

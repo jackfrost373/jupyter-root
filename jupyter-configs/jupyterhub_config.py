@@ -89,6 +89,10 @@ c.KubeSpawner.volume_mounts = [
 ]
 
 
+# add group for permissions
+c.KubeSpawner.supplemental_gids = ['100']
+
+
 # Cull idle notebooks
 
 #c.JupyterHub.services = [

@@ -23,7 +23,7 @@
         },
         {
             "name": "NOTEBOOK_IMAGE",
-            "value": "s2i-root-notebook:3.6",
+            "value": "s2i-root-notebook:v1.0",
             "required": true
         },
         {

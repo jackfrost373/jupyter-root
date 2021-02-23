@@ -6,7 +6,7 @@ Based on https://github.com/jupyter-on-openshift/jupyter-notebooks/tree/2.5.1 wh
 ROOT build following https://github.com/root-project/root-docker .  
 
 Deployment in openshift via https://github.com/jupyter-on-openshift/jupyterhub-quickstart  
-Update: use instead https://github.com/jupyter/docker-stacks/tree/master/examples/openshift
+(Update: use instead https://github.com/jupyter/docker-stacks/tree/master/examples/openshift ?)
 
 Docker: https://hub.docker.com/r/jackfrost373/jupyter-root  
 Image can be run with  

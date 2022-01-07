@@ -1,0 +1,111 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: jupyterhub-cfg
+  namespace: lhcb
+  selfLink: /api/v1/namespaces/lhcb/configmaps/jupyterhub-cfg
+  uid: 2197c20d-d905-439a-86f7-8c2979320690
+  resourceVersion: '765551877'
+  creationTimestamp: '2022-01-07T10:39:19Z'
+  labels:
+    app: jupyterhub
+    template.openshift.io/template-instance-owner: 3c7abf0f-889e-4635-aea5-02857f8585c9
+  managedFields:
+    - manager: openshift-controller-manager
+      operation: Update
+      apiVersion: v1
+      time: '2022-01-07T10:39:19Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:data': {}
+        'f:metadata':
+          'f:labels':
+            .: {}
+            'f:app': {}
+            'f:template.openshift.io/template-instance-owner': {}
+    - manager: Mozilla
+      operation: Update
+      apiVersion: v1
+      time: '2022-01-07T11:59:28Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:data':
+          'f:jupyterhub_config.py': {}
+          'f:jupyterhub_config.sh': {}
+data:
+  jupyterhub_config.py: 'import os;
+
+
+    port = int(os.environ.get("JUPYTER_NOTEBOOK_PORT", "8080"));
+
+
+    c.NotebookApp.ip = "0.0.0.0";
+
+    c.NotebookApp.port = port;
+
+    c.NotebookApp.open_browser = False;
+
+    c.NotebookApp.quit_button = False;
+
+
+    if os.environ.get("JUPYTERHUB_SERVICE_PREFIX"): 
+      c.NotebookApp.base_url = os.environ.get("JUPYTERHUB_SERVICE_PREFIX");
+
+
+    image_config_file =
+    "/opt/app-root/src/.jupyter/jupyter_notebook_config.py";
+
+    if os.path.exists(image_config_file): 
+      with open(image_config_file) as fp:
+        exec(compile(fp.read(), image_config_file, "exec"), globals());
+
+
+    from oauthenticator.github import GitHubOAuthenticator;
+
+    c.JupyterHub.authenticator_class = GitHubOAuthenticator;
+
+
+    c.GitHubOAuthenticator.oauth_callback_url =
+    "https://<jupyterhubURL>/hub/oauth_callback";
+
+    c.GitHubOAuthenticator.client_id = "<githubclientkey>";
+
+    c.GitHubOAuthenticator.client_secret =
+    "<githubclientsecret>";
+
+    c.Authenticator.admin_users = {"<github name>"};
+
+    c.Authenticator.whitelist = {"<list of github usernames>"};
+
+
+    c.KubeSpawner.user_storage_pvc_ensure = True;
+
+    c.KubeSpawner.pvc_name_template = "nb-{username}";
+
+    c.KubeSpawner.user_storage_capacity = "1Gi";
+
+
+    c.KubeSpawner.volumes = [ { 
+
+    "name": "data", 
+
+    "persistentVolumeClaim": {
+
+    "claimName": c.KubeSpawner.pvc_name_template 
+
+    } 
+
+    } ];
+
+
+    c.KubeSpawner.volume_mounts = [ { 
+
+    "name": "data", 
+
+    "mountPath": "/opt/app-root/src" 
+
+    } ];
+
+
+    c.KubeSpawner.supplemental_gids = ["100"]; '
+  jupyterhub_config.sh: 'pip install tornado==5.1.1 --force-reinstall'
